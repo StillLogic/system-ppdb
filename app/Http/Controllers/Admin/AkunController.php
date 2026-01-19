@@ -9,17 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class AkunController extends Controller
 {
-    /**
-     * Show form to create new admin account
-     */
     public function createAdmin()
     {
         return view('admin.akun.create-admin');
     }
     
-    /**
-     * Store new admin account
-     */
     public function storeAdmin(Request $request)
     {
         $request->validate([
@@ -44,14 +38,10 @@ class AkunController extends Controller
             ]);
     }
     
-    /**
-     * Delete user account
-     */
     public function destroy($id)
     {
         $user = User::findOrFail($id);
         
-        // Prevent deleting own account
         if ($user->id === auth()->id()) {
             return redirect()->back()->with('error', 'Tidak dapat menghapus akun sendiri!');
         }

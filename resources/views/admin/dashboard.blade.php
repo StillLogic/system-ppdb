@@ -59,9 +59,9 @@
             </div>
         </aside>
 
-        <!-- Main Content -->
+        
         <main class="flex-1 overflow-y-auto">
-            <!-- Header -->
+            
             <header class="bg-white shadow-sm">
                 <div class="px-8 py-6">
                     <h2 class="text-2xl font-bold text-gray-900">Dashboard Admin</h2>
@@ -69,9 +69,9 @@
                 </div>
             </header>
 
-            <!-- Content -->
+            
             <div class="p-8">
-                <!-- Stats Cards -->
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                     <!-- Total Pendaftar -->
                     <div class="bg-white rounded-lg shadow-md p-6">

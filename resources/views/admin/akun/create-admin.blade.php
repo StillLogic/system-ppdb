@@ -7,9 +7,9 @@
     <div class="flex h-screen">
         @include('admin.partials.sidebar')
 
-        <!-- Main Content -->
+        
         <main class="flex-1 overflow-y-auto">
-            <!-- Header -->
+            
             <header class="bg-white shadow-sm">
                 <div class="px-8 py-6 flex justify-between items-center">
                     <div>
@@ -22,7 +22,7 @@
                 </div>
             </header>
 
-            <!-- Content -->
+            
             <div class="p-8">
                 <div class="max-w-2xl mx-auto">
                     <div class="bg-white rounded-lg shadow-md p-8">

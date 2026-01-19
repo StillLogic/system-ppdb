@@ -7,9 +7,9 @@
     <div class="flex h-screen">
         @include('admin.partials.sidebar')
 
-        <!-- Main Content -->
+        
         <main class="flex-1 overflow-y-auto">
-            <!-- Header -->
+            
             <header class="bg-white shadow-sm">
                 <div class="px-8 py-6 flex justify-between items-center">
                     <div>
@@ -22,7 +22,7 @@
                 </div>
             </header>
 
-            <!-- Content -->
+            
             <div class="p-8">
                 <div class="bg-white rounded-lg shadow-md p-8">
                     @if ($errors->any())
@@ -45,7 +45,7 @@
                         </div>
                     @endif
 
-                    <!-- Info Box -->
+                    
                     <div class="mb-6 bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
                         <div class="flex">
                             <div class="flex-shrink-0">
@@ -64,7 +64,7 @@
                     <form method="POST" action="{{ route('admin.pendaftar.store') }}" class="space-y-8">
                         @csrf
 
-                        <!-- Data Akun -->
+                        
                         <div class="border-b pb-6">
                             <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
                                 <svg class="w-5 h-5 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,7 +84,7 @@
                             </div>
                         </div>
 
-                        <!-- Data Pribadi -->
+                        
                         <div class="border-b pb-6">
                             <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
                                 <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,7 +150,7 @@
                             </div>
                         </div>
 
-                        <!-- Data Orang Tua -->
+                        
                         <div class="border-b pb-6">
                             <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
                                 <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -205,7 +205,7 @@
                             </div>
                         </div>
 
-                        <!-- Alamat -->
+                        
                         <div class="pb-6">
                             <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
                                 <svg class="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -277,7 +277,7 @@
                             </div>
                         </div>
 
-                        <!-- Submit Buttons -->
+                        
                         <div class="flex justify-end space-x-4 pt-6 border-t">
                             <a href="{{ route('admin.dashboard') }}" class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold rounded-lg transition">
                                 Batal

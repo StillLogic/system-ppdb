@@ -7,7 +7,7 @@
     <div class="flex h-screen">
         @include('admin.partials.sidebar')
 
-        <!-- Main Content -->
+        
         <main class="flex-1 overflow-y-auto">
             <header class="bg-white shadow-sm">
                 <div class="px-8 py-6">
@@ -19,7 +19,7 @@
             <div class="p-8">
                 @include('components.toast')
 
-                <!-- Stats Cards -->
+                
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                     <div class="bg-white rounded-lg shadow-md p-6">
                         <div class="flex items-center justify-between">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
 
-                <!-- User Table -->
+                
                 <div class="bg-white rounded-lg shadow-md overflow-hidden">
                     <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
                         <h3 class="text-lg font-bold text-gray-900">Daftar Akun</h3>
@@ -147,7 +147,7 @@
                     </div>
                 </div>
 
-                <!-- Info Box -->
+                
                 <div class="mt-6 bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
                     <div class="flex">
                         <div class="flex-shrink-0">

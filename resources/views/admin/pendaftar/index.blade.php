@@ -58,9 +58,9 @@
             </div>
         </aside>
 
-        <!-- Main Content -->
+        
         <main class="flex-1 overflow-y-auto">
-            <!-- Header -->
+            
             <header class="bg-white shadow-sm">
                 <div class="px-8 py-6">
                     <h2 class="text-2xl font-bold text-gray-900">Data Pendaftar</h2>
@@ -68,7 +68,7 @@
                 </div>
             </header>
 
-            <!-- Content -->
+            
             <div class="p-8">
                 @include('components.toast')
 

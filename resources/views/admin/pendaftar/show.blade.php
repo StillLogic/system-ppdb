@@ -58,9 +58,9 @@
             </div>
         </aside>
 
-        <!-- Main Content -->
+        
         <main class="flex-1 overflow-y-auto">
-            <!-- Header -->
+            
             <header class="bg-white shadow-sm">
                 <div class="px-8 py-6 flex justify-between items-center">
                     <div>
@@ -73,14 +73,15 @@
                 </div>
             </header>
 
-            <!-- Content -->
+            
             <div class="p-8">
                 @include('components.toast')
+                @include('components.credentials-modal')
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- Main Info -->
+                    
                     <div class="lg:col-span-2 space-y-6">
-                        <!-- Data Pribadi -->
+                        
                         <div class="bg-white rounded-lg shadow-md p-6">
                             <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
                                 <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,7 +113,7 @@
                             </div>
                         </div>
 
-                        <!-- Data Orang Tua -->
+                        
                         <div class="bg-white rounded-lg shadow-md p-6">
                             <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
                                 <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,7 +145,7 @@
                             </div>
                         </div>
 
-                        <!-- Alamat -->
+                        
                         <div class="bg-white rounded-lg shadow-md p-6">
                             <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
                                 <svg class="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -219,7 +220,7 @@
                             </form>
                         </div>
 
-                        <!-- Delete -->
+                        
                         <div class="bg-white rounded-lg shadow-md p-6">
                             <h3 class="text-lg font-bold text-red-600 mb-2">Hapus Data</h3>
                             <p class="text-sm text-gray-600 mb-4">Tindakan ini tidak dapat dibatalkan</p>

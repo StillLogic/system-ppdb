@@ -4,7 +4,7 @@
     @include('layouts.head')
 </head>
 <body class="bg-gray-100">
-    <!-- Navigation -->
+    
     <nav class="bg-gradient-to-r from-blue-900 to-emerald-700 text-white shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
@@ -31,7 +31,7 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
+    
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Welcome Section -->
         <div class="bg-white rounded-lg shadow-md p-6 mb-6">
@@ -65,7 +65,7 @@
                 </div>
             </div>
 
-            <!-- Info Persyaratan -->
+            
             <div class="bg-white rounded-lg shadow-md p-6">
                 <h3 class="text-lg font-bold text-gray-900 mb-4">Persyaratan Pendaftaran</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -161,9 +161,9 @@
             </div>
         </div>
 
-        <!-- Form Pendaftaran & Timeline -->
+        
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <!-- Form Pendaftaran -->
+            
             <div class="lg:col-span-2 bg-white rounded-lg shadow-md">
                 <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
                     <h3 class="text-lg font-bold text-gray-900">Data Pendaftaran</h3>
@@ -175,7 +175,7 @@
                 </div>
                 <div class="p-6">
                     <div class="space-y-6">
-                        <!-- Data Pribadi -->
+                        
                         <div>
                             <h4 class="font-bold text-gray-900 mb-3 flex items-center">
                                 <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -211,7 +211,7 @@
                             </div>
                         </div>
 
-                        <!-- Data Orang Tua -->
+                        
                         <div>
                             <h4 class="font-bold text-gray-900 mb-3 flex items-center">
                                 <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -239,7 +239,7 @@
                             </div>
                         </div>
 
-                        <!-- Alamat -->
+                        
                         <div>
                             <h4 class="font-bold text-gray-900 mb-3 flex items-center">
                                 <svg class="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -334,7 +334,7 @@
                     </div>
                 </div>
 
-                <!-- Info Penting -->
+                
                 <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
                     <div class="flex items-start">
                         <svg class="h-5 w-5 text-blue-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20">

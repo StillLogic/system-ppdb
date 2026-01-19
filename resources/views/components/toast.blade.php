@@ -83,9 +83,5 @@ document.addEventListener('DOMContentLoaded', function() {
     @if(session('new_admin'))
         showToast("✅ Akun Admin Berhasil Dibuat! | Nama: {{ session('new_admin')['name'] }} | Email: {{ session('new_admin')['email'] }}", 'info');
     @endif
-    
-    @if(session('credentials'))
-        showToast("🔐 Akun Berhasil Dibuat! | Nama: {{ session('credentials')['nama'] }} | Email: {{ session('credentials')['email'] }} | Password: {{ session('credentials')['password'] }}", 'info');
-    @endif
 });
 </script>

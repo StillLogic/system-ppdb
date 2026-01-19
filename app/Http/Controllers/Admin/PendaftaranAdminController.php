@@ -11,19 +11,14 @@ use Illuminate\Support\Str;
 
 class PendaftaranAdminController extends Controller
 {
-    /**
-     * Display a listing of all pendaftaran
-     */
     public function index(Request $request)
     {
         $query = Pendaftaran::with('user');
         
-        // Filter berdasarkan status jika ada
         if ($request->has('status') && $request->status != '') {
             $query->where('status', $request->status);
         }
         
-        // Search berdasarkan nama atau nomor pendaftaran
         if ($request->has('search') && $request->search != '') {
             $search = $request->search;
             $query->where(function($q) use ($search) {
@@ -37,17 +32,11 @@ class PendaftaranAdminController extends Controller
         return view('admin.pendaftar.index', compact('pendaftaran'));
     }
     
-    /**
-     * Show form to create new pendaftaran by admin
-     */
     public function create()
     {
         return view('admin.pendaftar.create');
     }
     
-    /**
-     * Store new pendaftaran created by admin
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -72,20 +61,16 @@ class PendaftaranAdminController extends Controller
             'kode_pos' => 'required|string|max:10',
         ]);
         
-        // Generate random password (8 karakter)
         $password = Str::random(8);
         
-        // Buat user baru
         $user = User::create([
             'name' => $request->nama_lengkap,
             'email' => $request->email,
             'password' => Hash::make($password),
         ]);
         
-        // Assign role pendaftar
         $user->assignRole('pendaftar');
         
-        // Buat data pendaftaran
         $pendaftaran = Pendaftaran::create([
             'user_id' => $user->id,
             'nomor_pendaftaran' => Pendaftaran::generateNomorPendaftaran(),
@@ -110,7 +95,6 @@ class PendaftaranAdminController extends Controller
             'status' => 'pending',
         ]);
         
-        // Redirect dengan credentials
         return redirect()->route('admin.pendaftar.show', $pendaftaran->id)
             ->with('success', 'Pendaftaran berhasil ditambahkan!')
             ->with('credentials', [
@@ -120,9 +104,6 @@ class PendaftaranAdminController extends Controller
             ]);
     }
     
-    /**
-     * Display the specified pendaftaran
-     */
     public function show($id)
     {
         $pendaftaran = Pendaftaran::with('user')->findOrFail($id);

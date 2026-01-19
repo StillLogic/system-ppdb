@@ -13,7 +13,7 @@
 </head>
 <body class="islamic-pattern min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full">
-        <!-- Logo & Header -->
+        
         <div class="text-center mb-8">
             <div class="text-6xl mb-4">🕌</div>
             <h2 class="text-3xl font-bold text-gray-900 mb-2">
@@ -24,7 +24,7 @@
             </p>
         </div>
 
-        <!-- Register Form -->
+        
         <div class="bg-white rounded-xl shadow-2xl p-8">
             @if ($errors->any())
                 <div class="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded">
@@ -49,7 +49,7 @@
             <form method="POST" action="{{ route('register') }}" class="space-y-6">
                 @csrf
 
-                <!-- Nama Lengkap -->
+                
                 <div>
                     <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">
                         Nama Lengkap <span class="text-red-500">*</span>
@@ -68,7 +68,7 @@
                     @enderror
                 </div>
 
-                <!-- Email -->
+                
                 <div>
                     <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
                         Email <span class="text-red-500">*</span>
@@ -86,7 +86,7 @@
                     @enderror
                 </div>
 
-                <!-- Password -->
+                
                 <div>
                     <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">
                         Password <span class="text-red-500">*</span>
@@ -112,7 +112,7 @@
                     <p class="mt-1 text-xs text-gray-500">Password minimal 8 karakter</p>
                 </div>
 
-                <!-- Konfirmasi Password -->
+                
                 <div>
                     <label for="password_confirmation" class="block text-sm font-semibold text-gray-700 mb-2">
                         Konfirmasi Password <span class="text-red-500">*</span>
@@ -134,7 +134,7 @@
                     </div>
                 </div>
 
-                <!-- Info -->
+                
                 <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
                     <div class="flex">
                         <div class="flex-shrink-0">
@@ -150,7 +150,7 @@
                     </div>
                 </div>
 
-                <!-- Submit Button -->
+                
                 <div>
                     <button 
                         type="submit"
@@ -165,7 +165,7 @@
                 </div>
             </form>
 
-            <!-- Login Link -->
+            
             <div class="mt-6 pt-6 border-t border-gray-200">
                 <p class="text-center text-sm text-gray-600">
                     Sudah punya akun? 
@@ -176,7 +176,7 @@
             </div>
         </div>
 
-        <!-- Back to Home -->
+        
         <div class="mt-6 text-center">
             <a href="/" class="text-sm text-gray-600 hover:text-gray-900 transition">
                 ← Kembali ke Beranda

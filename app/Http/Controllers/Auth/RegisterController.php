@@ -11,20 +11,13 @@ use Illuminate\Validation\Rules\Password;
 
 class RegisterController extends Controller
 {
-    /**
-     * Tampilkan halaman registrasi
-     */
     public function showRegistrationForm()
     {
         return view('auth.register');
     }
 
-    /**
-     * Handle proses registrasi
-     */
     public function register(Request $request)
     {
-        // Validasi input
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -39,20 +32,15 @@ class RegisterController extends Controller
             'password.min' => 'Password minimal 8 karakter.',
         ]);
 
-        // Buat user baru
         $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
         ]);
 
-        // Assign role pendaftar secara otomatis
         $user->assignRole('pendaftar');
-
-        // Login otomatis setelah registrasi
         Auth::login($user);
 
-        // Redirect ke dashboard pendaftar
         return redirect()->route('pendaftar.dashboard')->with('success', 'Registrasi berhasil! Selamat datang.');
     }
 }

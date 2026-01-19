@@ -6,19 +6,16 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
-// Landing Page
 Route::get('/', function () {
     return view('landing');
 })->name('home');
 
-// Authentication Routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Dashboard Admin - Protected by auth and role:admin middleware
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
         $totalPendaftar = \App\Models\Pendaftaran::count();
@@ -26,7 +23,6 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
         $diterima = \App\Models\Pendaftaran::where('status', 'diterima')->count();
         $ditolak = \App\Models\Pendaftaran::where('status', 'ditolak')->count();
         
-        // Ambil 5 pendaftar terbaru dengan relasi user
         $recentPendaftar = \App\Models\Pendaftaran::with('user')
             ->orderBy('created_at', 'desc')
             ->take(5)
@@ -35,7 +31,6 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
         return view('admin.dashboard', compact('totalPendaftar', 'pending', 'diterima', 'ditolak', 'recentPendaftar'));
     })->name('admin.dashboard');
     
-    // Data Pendaftar Routes
     Route::get('/pendaftar', [App\Http\Controllers\Admin\PendaftaranAdminController::class, 'index'])->name('admin.pendaftar.index');
     Route::get('/pendaftar/create', [App\Http\Controllers\Admin\PendaftaranAdminController::class, 'create'])->name('admin.pendaftar.create');
     Route::post('/pendaftar/store', [App\Http\Controllers\Admin\PendaftaranAdminController::class, 'store'])->name('admin.pendaftar.store');
@@ -43,7 +38,6 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::put('/pendaftar/{id}/update-status', [App\Http\Controllers\Admin\PendaftaranAdminController::class, 'updateStatus'])->name('admin.pendaftar.update-status');
     Route::delete('/pendaftar/{id}', [App\Http\Controllers\Admin\PendaftaranAdminController::class, 'destroy'])->name('admin.pendaftar.destroy');
     
-    // Manajemen Akun
     Route::get('/akun', function () {
         $users = \App\Models\User::with('roles')->orderBy('created_at', 'desc')->get();
         return view('admin.akun', compact('users'));
@@ -53,14 +47,11 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::delete('/akun/{id}', [App\Http\Controllers\Admin\AkunController::class, 'destroy'])->name('admin.akun.destroy');
 });
 
-// Dashboard Pendaftar - Protected by auth and role:pendaftar middleware
 Route::middleware(['auth', 'role:pendaftar'])->prefix('pendaftar')->group(function () {
     Route::get('/dashboard', function () {
         $pendaftaran = Auth::user()->pendaftaran;
         return view('pendaftar.dashboard', compact('pendaftaran'));
     })->name('pendaftar.dashboard');
-    
-    // Routes untuk pendaftaran
     Route::get('/pendaftaran/create', [App\Http\Controllers\PendaftaranController::class, 'create'])->name('pendaftar.pendaftaran.create');
     Route::post('/pendaftaran/store', [App\Http\Controllers\PendaftaranController::class, 'store'])->name('pendaftar.pendaftaran.store');
     Route::get('/pendaftaran/edit', [App\Http\Controllers\PendaftaranController::class, 'edit'])->name('pendaftar.pendaftaran.edit');

@@ -13,7 +13,7 @@
 </head>
 <body class="islamic-pattern min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full">
-        <!-- Logo & Header -->
+        
         <div class="text-center mb-8">
             <div class="text-6xl mb-4">🕌</div>
             <h2 class="text-3xl font-bold text-gray-900 mb-2">
@@ -24,7 +24,7 @@
             </p>
         </div>
 
-        <!-- Login Form -->
+        
         <div class="bg-white rounded-xl shadow-2xl p-8">
             @if ($errors->any())
                 <div class="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded">
@@ -46,7 +46,7 @@
             <form method="POST" action="{{ route('login') }}" class="space-y-6">
                 @csrf
 
-                <!-- Email -->
+                
                 <div>
                     <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
                         Email
@@ -62,7 +62,7 @@
                         placeholder="email@example.com">
                 </div>
 
-                <!-- Password -->
+                
                 <div>
                     <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">
                         Password
@@ -98,7 +98,7 @@
                     </div>
                 </div>
 
-                <!-- Submit Button -->
+                
                 <div>
                     <button 
                         type="submit"
@@ -113,7 +113,7 @@
                 </div>
             </form>
 
-            <!-- Info -->
+            
             <div class="mt-6 pt-6 border-t border-gray-200">
                 <p class="text-center text-sm text-gray-600">
                     Belum punya akun? 
@@ -124,7 +124,7 @@
             </div>
         </div>
 
-        <!-- Back to Home -->
+        
         <div class="mt-6 text-center">
             <a href="/" class="text-sm text-gray-600 hover:text-gray-900 transition">
                 ← Kembali ke Beranda

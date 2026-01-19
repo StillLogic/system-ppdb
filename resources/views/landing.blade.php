@@ -69,7 +69,7 @@
                 </a>
             </div>
             
-            <!-- Info Cards -->
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
                 <div class="bg-white rounded-lg p-6 shadow-xl">
                     <div class="text-3xl mb-2">📅</div>

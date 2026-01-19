@@ -4,7 +4,7 @@
     @include('layouts.head')
 </head>
 <body class="bg-gray-100">
-    <!-- Navigation -->
+    
     <nav class="bg-gradient-to-r from-blue-900 to-emerald-700 text-white shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
@@ -24,7 +24,7 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
+    
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="bg-white rounded-lg shadow-md p-8">
             <div class="mb-6">
@@ -58,7 +58,7 @@
                 @csrf
                 @method('PUT')
 
-                <!-- Data Pribadi -->
+                
                 <div class="border-b pb-6">
                     <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
                         <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -124,7 +124,7 @@
                     </div>
                 </div>
 
-                <!-- Data Orang Tua -->
+                
                 <div class="border-b pb-6">
                     <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
                         <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -179,7 +179,7 @@
                     </div>
                 </div>
 
-                <!-- Alamat -->
+                
                 <div class="pb-6">
                     <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
                         <svg class="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -251,7 +251,7 @@
                     </div>
                 </div>
 
-                <!-- Submit Buttons -->
+                
                 <div class="flex justify-end space-x-4 pt-6 border-t">
                     <a href="{{ route('pendaftar.dashboard') }}" class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold rounded-lg transition">
                         Batal
