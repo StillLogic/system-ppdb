@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Pendaftar - PPDB Pondok Pesantren</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    @include('layouts.head')
 </head>
 <body class="bg-gray-100">
     <div class="flex h-screen">
@@ -78,48 +75,7 @@
 
             <!-- Content -->
             <div class="p-8">
-                @if(session('success'))
-                    <div class="mb-6 bg-green-50 border-l-4 border-green-500 p-4 rounded">
-                        <p class="text-sm text-green-700 font-semibold">{{ session('success') }}</p>
-                    </div>
-                @endif
-
-                @if(session('credentials'))
-                    <div class="mb-6 bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <svg class="h-6 w-6 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-                                </svg>
-                            </div>
-                            <div class="ml-4 flex-1">
-                                <h3 class="text-lg font-bold text-blue-800 mb-3">Informasi Akun Login</h3>
-                                <div class="bg-white rounded-lg p-4 border border-blue-200">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div>
-                                            <p class="text-sm text-gray-600 mb-1">Nama</p>
-                                            <p class="font-semibold text-gray-900">{{ session('credentials')['nama'] }}</p>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm text-gray-600 mb-1">Email</p>
-                                            <p class="font-semibold text-gray-900">{{ session('credentials')['email'] }}</p>
-                                        </div>
-                                        <div class="md:col-span-2">
-                                            <p class="text-sm text-gray-600 mb-1">Password (sementara)</p>
-                                            <p class="font-mono font-bold text-lg text-blue-900 bg-blue-50 px-3 py-2 rounded border border-blue-200">{{ session('credentials')['password'] }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="text-sm text-blue-700 mt-3">
-                                    <svg class="inline w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <strong>Penting:</strong> Berikan email dan password ini kepada pendaftar. Mereka dapat menggunakan kredensial ini untuk login ke sistem.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                @endif
+                @include('components.toast')
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <!-- Main Info -->
@@ -267,10 +223,10 @@
                         <div class="bg-white rounded-lg shadow-md p-6">
                             <h3 class="text-lg font-bold text-red-600 mb-2">Hapus Data</h3>
                             <p class="text-sm text-gray-600 mb-4">Tindakan ini tidak dapat dibatalkan</p>
-                            <form method="POST" action="{{ route('admin.pendaftar.destroy', $pendaftaran->id) }}" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                            <form method="POST" action="{{ route('admin.pendaftar.destroy', $pendaftaran->id) }}" id="deleteForm">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="w-full px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition">
+                                <button type="button" onclick="showConfirmModal('Yakin ingin menghapus data pendaftaran ini? Tindakan ini tidak dapat dibatalkan.', document.getElementById(\'deleteForm\'))" class="w-full px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition">
                                     Hapus Data
                                 </button>
                             </form>
@@ -280,5 +236,7 @@
             </div>
         </main>
     </div>
+
+    @include('components.confirm-modal')
 </body>
 </html>

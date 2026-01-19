@@ -26,12 +26,5 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@pesantren.ac.id',
         ]);
         $admin->assignRole('admin');
-
-        // Buat user pendaftar sebagai contoh
-        $pendaftar = User::factory()->create([
-            'name' => 'Pendaftar Test',
-            'email' => 'pendaftar@example.com',
-        ]);
-        $pendaftar->assignRole('pendaftar');
     }
 }

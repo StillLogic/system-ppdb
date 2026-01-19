@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Pendaftaran - PPDB Pondok Pesantren</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    @include('layouts.head')
 </head>
 <body class="bg-gray-100">
     <!-- Navigation -->
@@ -55,11 +52,7 @@
                 </div>
             @endif
 
-            @if(session('success'))
-                <div class="mb-6 bg-green-50 border-l-4 border-green-500 p-4 rounded">
-                    <p class="text-sm text-green-700 font-semibold">{{ session('success') }}</p>
-                </div>
-            @endif
+            @include('components.toast')
 
             <form method="POST" action="{{ route('pendaftar.pendaftaran.update') }}" class="space-y-8">
                 @csrf

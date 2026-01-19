@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Pendaftar - PPDB Pondok Pesantren</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    @include('layouts.head')
 </head>
 <body class="bg-gray-100">
     <div class="flex h-screen">
@@ -73,11 +70,7 @@
 
             <!-- Content -->
             <div class="p-8">
-                @if(session('success'))
-                    <div class="mb-6 bg-green-50 border-l-4 border-green-500 p-4 rounded">
-                        <p class="text-sm text-green-700 font-semibold">{{ session('success') }}</p>
-                    </div>
-                @endif
+                @include('components.toast')
 
                 <!-- Filter & Search -->
                 <div class="bg-white rounded-lg shadow-md p-6 mb-6">

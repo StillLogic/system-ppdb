@@ -48,6 +48,9 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
         $users = \App\Models\User::with('roles')->orderBy('created_at', 'desc')->get();
         return view('admin.akun', compact('users'));
     })->name('admin.akun');
+    Route::get('/akun/create-admin', [App\Http\Controllers\Admin\AkunController::class, 'createAdmin'])->name('admin.akun.create-admin');
+    Route::post('/akun/store-admin', [App\Http\Controllers\Admin\AkunController::class, 'storeAdmin'])->name('admin.akun.store-admin');
+    Route::delete('/akun/{id}', [App\Http\Controllers\Admin\AkunController::class, 'destroy'])->name('admin.akun.destroy');
 });
 
 // Dashboard Pendaftar - Protected by auth and role:pendaftar middleware
@@ -63,37 +66,3 @@ Route::middleware(['auth', 'role:pendaftar'])->prefix('pendaftar')->group(functi
     Route::get('/pendaftaran/edit', [App\Http\Controllers\PendaftaranController::class, 'edit'])->name('pendaftar.pendaftaran.edit');
     Route::put('/pendaftaran/update', [App\Http\Controllers\PendaftaranController::class, 'update'])->name('pendaftar.pendaftaran.update');
 });
-
-// ===== ROUTE TESTING (Bisa dihapus nanti) =====
-// Route untuk test role - Login sebagai user tertentu
-Route::get('/test-login/{id}', function ($id) {
-    $user = User::findOrFail($id);
-    Auth::login($user);
-    return redirect('/check-role');
-});
-
-// Route untuk cek role user yang sedang login
-Route::get('/check-role', function () {
-    if (!Auth::check()) {
-        return '<h1>Belum Login</h1><p>Silakan login dulu:</p>
-                <a href="/test-login/1">Login sebagai Admin</a> | 
-                <a href="/test-login/2">Login sebagai Pendaftar</a>';
-    }
-    
-    $user = Auth::user();
-    $roles = $user->getRoleNames();
-    
-    return view('check-role', compact('user', 'roles'));
-});
-
-// Route khusus admin (akan error jika bukan admin)
-Route::get('/admin-only', function () {
-    return '<h1>✅ Halaman Admin</h1><p>Anda berhasil mengakses halaman admin!</p>
-            <a href="/check-role">Kembali</a>';
-})->middleware(['auth', 'role:admin']);
-
-// Route khusus pendaftar (akan error jika bukan pendaftar)
-Route::get('/pendaftar-only', function () {
-    return '<h1>✅ Halaman Pendaftar</h1><p>Anda berhasil mengakses halaman pendaftar!</p>
-            <a href="/check-role">Kembali</a>';
-})->middleware(['auth', 'role:pendaftar']);
