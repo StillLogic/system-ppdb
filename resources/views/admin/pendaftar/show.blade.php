@@ -227,7 +227,7 @@
                             <form method="POST" action="{{ route('admin.pendaftar.destroy', $pendaftaran->id) }}" id="deleteForm">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" onclick="showConfirmModal('Yakin ingin menghapus data pendaftaran ini? Tindakan ini tidak dapat dibatalkan.', document.getElementById(\'deleteForm\'))" class="w-full px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition">
+                                <button type="button" onclick="showConfirmModal('Yakin ingin menghapus data pendaftaran ini? Tindakan ini tidak dapat dibatalkan.', this.closest('form'))" class="w-full px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition">
                                     Hapus Data
                                 </button>
                             </form>
