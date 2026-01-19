@@ -1,59 +1,371 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🕌 Sistem PPDB Pondok Pesantren
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistem Penerimaan Peserta Didik Baru (PPDB) untuk Pondok Pesantren berbasis web menggunakan Laravel 11.
 
-## About Laravel
+## 📋 Deskripsi
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Aplikasi ini adalah sistem manajemen PPDB yang memudahkan proses pendaftaran santri baru secara online. Sistem ini memiliki 2 role utama: **Admin** dan **Pendaftar**, dengan fitur lengkap untuk mengelola data pendaftaran dari awal hingga verifikasi.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Fitur Utama
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🔐 Authentication
 
-## Learning Laravel
+- Registrasi akun pendaftar
+- Login dengan role-based access (Admin & Pendaftar)
+- Logout dengan session management
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 👤 Fitur Pendaftar
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Dashboard dengan ringkasan status pendaftaran
+- Form pendaftaran santri baru (lengkap dengan data pribadi, orang tua, dan alamat)
+- Edit data pendaftaran (hanya jika status masih pending)
+- View status pendaftaran (Pending/Diterima/Ditolak)
+- Nomor pendaftaran otomatis
 
-## Laravel Sponsors
+### 👨‍💼 Fitur Admin
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- Dashboard dengan statistik (Total, Pending, Diterima, Ditolak)
+- CRUD Data Pendaftar
+    - Lihat semua data pendaftaran
+    - Tambah pendaftar baru (otomatis create akun dengan password random)
+    - Detail pendaftar
+    - Update status pendaftaran
+    - Hapus data pendaftar
+- Filter & Search pendaftar
+- Manajemen Akun
+    - Lihat semua user (Admin & Pendaftar)
+    - Tambah akun admin baru
+    - Hapus akun user
+- Modal konfirmasi untuk aksi hapus
+- Modal kredensial untuk akun baru (dengan tombol copy password)
 
-### Premium Partners
+### 🎨 UI/UX Features
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- Toast notification (auto-hide 3 detik) di kanan atas
+- Modal konfirmasi untuk delete actions
+- Modal kredensial untuk informasi akun baru
+- Toggle show/hide password di semua form
+- Responsive design dengan Tailwind CSS
+- Islamic theme dengan warna biru, hijau emerald, dan gold
 
-## Contributing
+## 🛠 Teknologi yang Digunakan
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **Framework**: Laravel 11.x
+- **PHP**: 8.4.17
+- **Database**: MySQL
+- **Authentication**: Laravel Built-in Auth
+- **Authorization**: Spatie Laravel Permission v6.24
+- **Frontend**: Tailwind CSS (CDN), Blade Template
+- **Icons**: SVG (Heroicons)
 
-## Code of Conduct
+## 📁 Struktur Project
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+system-ppdb/
+├── app/
+│   ├── Http/
+│   │   └── Controllers/
+│   │       ├── Auth/
+│   │       │   ├── LoginController.php        # Handle login
+│   │       │   └── RegisterController.php     # Handle registrasi
+│   │       ├── Admin/
+│   │       │   ├── PendaftaranAdminController.php  # CRUD pendaftar by admin
+│   │       │   └── AkunController.php         # Manajemen akun admin
+│   │       ├── PendaftaranController.php      # CRUD pendaftaran by pendaftar
+│   │       └── Controller.php                 # Base controller
+│   ├── Models/
+│   │   ├── User.php                          # Model user dengan Spatie Permission
+│   │   └── Pendaftaran.php                   # Model data pendaftaran
+│   └── Providers/
+│       └── AppServiceProvider.php
+│
+├── database/
+│   ├── migrations/
+│   │   ├── 0001_01_01_000000_create_users_table.php
+│   │   ├── 0001_01_01_000001_create_cache_table.php
+│   │   ├── 0001_01_01_000002_create_jobs_table.php
+│   │   ├── 2024_01_15_000000_create_permission_tables.php
+│   │   └── 2024_01_15_000001_create_pendaftaran_table.php
+│   └── seeders/
+│       ├── DatabaseSeeder.php                # Seed akun admin
+│       └── RoleSeeder.php                    # Seed roles (admin, pendaftar)
+│
+├── resources/
+│   └── views/
+│       ├── auth/
+│       │   ├── login.blade.php               # Halaman login
+│       │   └── register.blade.php            # Halaman registrasi
+│       ├── admin/
+│       │   ├── dashboard.blade.php           # Dashboard admin
+│       │   ├── akun.blade.php                # Manajemen akun
+│       │   ├── akun/
+│       │   │   └── create-admin.blade.php    # Form tambah admin
+│       │   ├── pendaftar/
+│       │   │   ├── index.blade.php           # List pendaftar
+│       │   │   ├── show.blade.php            # Detail pendaftar
+│       │   │   └── create.blade.php          # Form tambah pendaftar
+│       │   └── partials/
+│       │       └── sidebar.blade.php         # Sidebar admin
+│       ├── pendaftar/
+│       │   ├── dashboard.blade.php           # Dashboard pendaftar
+│       │   ├── form-pendaftaran.blade.php    # Form pendaftaran baru
+│       │   └── edit-pendaftaran.blade.php    # Form edit pendaftaran
+│       ├── components/
+│       │   ├── toast.blade.php               # Toast notification
+│       │   ├── confirm-modal.blade.php       # Modal konfirmasi delete
+│       │   └── credentials-modal.blade.php   # Modal kredensial akun baru
+│       ├── layouts/
+│       │   └── head.blade.php                # Shared head (title, icon, tailwind)
+│       └── landing.blade.php                 # Landing page
+│
+├── routes/
+│   └── web.php                               # Semua routing aplikasi
+│
+├── .env                                      # Environment configuration
+├── composer.json                             # PHP dependencies
+└── README.md                                 # Dokumentasi ini
+```
 
-## Security Vulnerabilities
+## 🚀 Cara Instalasi
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Prasyarat
 
-## License
+- PHP >= 8.2
+- Composer
+- MySQL/MariaDB
+- Git
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Langkah Instalasi
+
+1. **Clone Repository**
+
+    ```bash
+    git clone <repository-url>
+    cd system-ppdb
+    ```
+
+2. **Install Dependencies**
+
+    ```bash
+    composer install
+    ```
+
+3. **Setup Environment**
+
+    ```bash
+    cp .env.example .env
+    ```
+
+    Edit file `.env` dan sesuaikan konfigurasi database:
+
+    ```env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=ppdb_pesantren
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+
+4. **Generate Application Key**
+
+    ```bash
+    php artisan key:generate
+    ```
+
+5. **Buat Database**
+
+    ```bash
+    mysql -u root -p
+    CREATE DATABASE ppdb_pesantren;
+    exit;
+    ```
+
+6. **Jalankan Migration & Seeder**
+
+    ```bash
+    php artisan migrate --seed
+    ```
+
+    Seeder akan membuat:
+    - Role: `admin` dan `pendaftar`
+    - Akun Admin default:
+        - Email: `admin@pesantren.ac.id`
+        - Password: `password`
+
+7. **Jalankan Development Server**
+
+    ```bash
+    php artisan serve
+    ```
+
+    Aplikasi akan berjalan di: `http://localhost:8000`
+
+## 👥 Akun Default
+
+Setelah menjalankan seeder, gunakan akun berikut untuk login:
+
+**Admin:**
+
+- Email: `admin@pesantren.ac.id`
+- Password: `password`
+
+## 📖 Cara Penggunaan
+
+### Untuk Pendaftar
+
+1. **Registrasi Akun**
+    - Klik "Daftar Sekarang" di halaman login
+    - Isi form registrasi (Nama, Email, Password)
+    - Otomatis login setelah registrasi berhasil
+
+2. **Isi Form Pendaftaran**
+    - Login ke sistem
+    - Klik "Isi Formulir Pendaftaran" di dashboard
+    - Lengkapi semua data yang diperlukan:
+        - Data Pribadi
+        - Data Orang Tua
+        - Alamat Lengkap
+    - Submit formulir
+
+3. **Cek Status Pendaftaran**
+    - Status akan muncul di dashboard
+    - Kemungkinan status: Pending, Diterima, Ditolak
+
+4. **Edit Pendaftaran**
+    - Hanya bisa edit jika status masih "Pending"
+    - Klik "Edit Data" di dashboard
+    - Update data yang diperlukan
+
+### Untuk Admin
+
+1. **Login**
+    - Gunakan akun admin default atau akun admin yang sudah dibuat
+
+2. **Dashboard**
+    - Lihat statistik pendaftaran
+    - Lihat 5 pendaftar terbaru
+
+3. **Kelola Data Pendaftar**
+    - **Lihat Semua**: Menu "Data Pendaftar"
+    - **Filter**: Berdasarkan status (Pending/Diterima/Ditolak)
+    - **Search**: Cari berdasarkan nama atau nomor pendaftaran
+    - **Detail**: Klik nama pendaftar untuk lihat detail lengkap
+    - **Update Status**: Ubah status menjadi Diterima/Ditolak
+    - **Hapus**: Hapus data pendaftar (dengan konfirmasi modal)
+
+4. **Tambah Pendaftar Baru (oleh Admin)**
+    - Klik "Tambah Pendaftar" di halaman Data Pendaftar
+    - Isi semua form yang diperlukan
+    - Sistem otomatis:
+        - Generate password random (8 karakter)
+        - Create akun user
+        - Assign role "pendaftar"
+        - Tampilkan kredensial di modal (bisa dicopy)
+    - **Penting**: Catat kredensial untuk diberikan ke pendaftar
+
+5. **Manajemen Akun**
+    - Lihat semua user (Admin & Pendaftar)
+    - **Tambah Admin**: Buat akun admin baru dengan password manual
+    - **Hapus Akun**: Hapus user (tidak bisa hapus akun sendiri)
+
+## 🗄 Database Schema
+
+### Tabel: users
+
+- id
+- name
+- email
+- password
+- created_at, updated_at
+
+### Tabel: pendaftaran
+
+- id
+- user_id (FK ke users)
+- nomor_pendaftaran (auto-generated)
+- nama_lengkap
+- jenis_kelamin
+- tempat_lahir
+- tanggal_lahir
+- no_telepon
+- asal_sekolah
+- nama_ayah
+- nama_ibu
+- pekerjaan_ayah
+- pekerjaan_ibu
+- no_telepon_ortu
+- alamat_lengkap
+- rt_rw
+- kelurahan
+- kecamatan
+- kota
+- provinsi
+- kode_pos
+- status (pending/diterima/ditolak)
+- created_at, updated_at
+
+### Tabel Spatie Permission
+
+- roles
+- permissions
+- model_has_roles
+- model_has_permissions
+- role_has_permissions
+
+## 🎯 Fitur Keamanan
+
+- ✅ Password hashing dengan bcrypt
+- ✅ CSRF Protection
+- ✅ Role-based Access Control
+- ✅ Middleware authentication
+- ✅ SQL Injection prevention (Eloquent ORM)
+- ✅ XSS Protection (Blade auto-escaping)
+
+## 🔄 Update & Maintenance
+
+### Clear Cache
+
+```bash
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+```
+
+### Fresh Install (Reset Database)
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+## 📝 Notes
+
+- Nomor pendaftaran otomatis di-generate dengan format: `PPDB-YYYYMM-XXXX` (contoh: `PPDB-202601-0001`)
+- Password yang di-generate admin untuk pendaftar adalah random string 8 karakter
+- Pendaftar hanya bisa edit data jika status masih "Pending"
+- Admin tidak bisa menghapus akun sendiri
+- Toast notification otomatis hilang setelah 3 detik
+- Modal kredensial hanya muncul sekali setelah create akun
+
+## 🤝 Contributing
+
+Jika ingin berkontribusi:
+
+1. Fork repository ini
+2. Buat branch fitur (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push ke branch (`git push origin feature/AmazingFeature`)
+5. Buat Pull Request
+
+## 📄 License
+
+Project ini menggunakan [MIT License](https://opensource.org/licenses/MIT).
+
+## 📞 Support
+
+Jika ada pertanyaan atau masalah, silakan buat issue di repository ini.
+
+---
+
+Dibuat dengan ❤️ untuk kemudahan proses PPDB Pondok Pesantren
